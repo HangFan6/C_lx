@@ -5,6 +5,8 @@
 #include<string.h>
 #include<Windows.h>
 
+//实现模拟用户登录情景，并且只能登录三次。
+//只允许输入三次密码，如果密码正确，则提示登录成功；如果三次均输入错误，则退出程序
 int main()
 {
 	int i = 0;
