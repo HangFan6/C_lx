@@ -22,6 +22,10 @@ int main()
 			printf("登录成功\n");
 			break;
 		}
+		else
+		{
+			printf("输入错误\n");
+		}
 	}
 	if (i == 3)
 		printf("三次密码均错误，退出程序\n");
