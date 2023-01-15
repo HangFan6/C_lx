@@ -9,6 +9,7 @@ int main()
 {
 	char arr1[] = "bit";
 	char arr2[] = "########";
+	//将数组arr1拷贝到数组arr2中
 	strcpy(arr2, arr1);
 	printf("%s\n", arr2);
 	return 0;
