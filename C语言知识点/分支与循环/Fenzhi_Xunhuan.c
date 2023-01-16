@@ -5,32 +5,64 @@
 #include<string.h>
 #include<Windows.h>
 
-//实现模拟用户登录情景，并且只能登录三次
-//只允许输入三次密码，如果密码正确，则提示登录成功；如果三次均输入错误，则退出程序
+//关机程序
 int main()
 {
-	int i = 0;
-	char password[20] = { 0 };
-	for (i = 0; i < 3; i++)
+	char input[20] = { 0 };
+	//shutdown -s -t 60
+	//system()--执行系统命令的
+again:
+	system("shutdown -s -t 60");
+	printf("请注意，电脑将在1分钟内关机\n如果输入：留步，将取消关机\n请输入:>");
+	scanf("%s", input);
+	if (strcmp(input, "留步") == 0)//strcmp--比较两个字符串
 	{
-		printf("请输入密码：");
-		scanf("%s", password);
-		//== 不能用来判断两个字符串是否相等
-		//应使用一个库函数--strcmp
-		if (strcmp(password, "123456") == 0)
-		{
-			printf("登录成功\n");
-			break;
-		}
-		else
-		{
-			printf("输入错误\n");
-		}
+		system("shutdown -a");//取消关机
 	}
-	if (i == 3)
-		printf("三次密码均错误，退出程序\n");
+	else
+	{
+		goto again;
+	}
 	return 0;
 }
+
+////goto语句
+//int main()
+//{
+//	printf("hello bit\n");
+//	goto again;
+//	printf("你好！\n");
+//again:
+//	printf("hehe\n");
+//	return 0;
+//}
+
+////实现模拟用户登录情景，并且只能登录三次
+////只允许输入三次密码，如果密码正确，则提示登录成功；如果三次均输入错误，则退出程序
+//int main()
+//{
+//	int i = 0;
+//	char password[20] = { 0 };
+//	for (i = 0; i < 3; i++)
+//	{
+//		printf("请输入密码：");
+//		scanf("%s", password);
+//		//== 不能用来判断两个字符串是否相等
+//		//应使用一个库函数--strcmp
+//		if (strcmp(password, "123456") == 0)
+//		{
+//			printf("登录成功\n");
+//			break;
+//		}
+//		else
+//		{
+//			printf("输入错误\n");
+//		}
+//	}
+//	if (i == 3)
+//		printf("三次密码均错误，退出程序\n");
+//	return 0;
+//}
 
 ////演示多个字符从两端移动，向中间汇聚
 //int main()
