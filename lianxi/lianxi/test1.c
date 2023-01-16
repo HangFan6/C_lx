@@ -1,29 +1,61 @@
-#define _CRT_SECURE_NO_WARNINGS 1  //解决不安全访问警告/报错问题
+﻿#define _CRT_SECURE_NO_WARNINGS 1  //解决不安全访问警告/报错问题
 #include<stdio.h>
 #include<math.h>
 #include<stdlib.h>
 #include<string.h>
 
-//
-
-
-//求10个整数中的最大值
-
-
-//计算1-1/2+1/3-1/4+1/5-...+1/99-1/100的值
+//输出9*9乘法口诀表
 int main()
 {
 	int i = 0;
-	double sum = 0.0;
-	for (i = 1; i <= 100; i++)
+	//确定打印9行
+	for (i = 1; i < 9; i++)
 	{
-		//若sum是int型，除法运算时，若分子小于分母，结果为0
-		//
-		sum += 1.0 / i;
+		//打印一行
+		int j = 1;
+		for (j = 1; j <= i; j++)
+		{
+			printf("%d*%d=%-2d  ", i, j, i * j);
+			//%-2d：使数据输出时占用2行，不足2行时，在右边补空格
+		}
+		printf("\n");
 	}
-	printf("%lf\n", sum);
 	return 0;
 }
+
+////求10个整数中的最大值
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int max = arr[0];
+//	//不能将max初始化为0，若数组元素全为负数，就不会输出数组中的最大值
+//	int i = 0;
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	for (i = 1; i < sz; i++)
+//	{
+//		if (arr[i] > max)
+//			max = arr[i];
+//	}
+//	printf("max = %d\n", max);
+//	return 0;
+//}
+
+////计算1-1/2+1/3-1/4+1/5-...+1/99-1/100的值
+//int main()
+//{
+//	int i = 0;
+//	double sum = 0.0;
+//	int f = 0;//定义符号
+//	for (i = 1; i <= 100; i++)
+//	{
+//		//若sum是int型，除法运算时，若分子小于分母，结果为0
+//		//除数必须是浮点型，才可以得到浮点型结果
+//		sum += 1.0 / i;
+//		f = -f;
+//	}
+//	printf("%lf\n", sum);
+//	return 0;
+//}
 
 //数一下1-100所有整数中出现多少个数字9
 //int main()
