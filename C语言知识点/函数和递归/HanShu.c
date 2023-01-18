@@ -132,21 +132,139 @@
 //	return 0;
 //}
 
+////练习4：
+////写一个函数，每调用一次此函数，就会将num的值增加1。
+//void Add(int* p)
+//{
+//	//*p++中++只作用于p
+//	(*p)++;
+//}
+//int main()
+//{
+//	int num = 0;
+//	Add(&num);
+//	printf("num = %d\n", num);
+//	Add(&num);
+//	printf("num = %d\n", num);
+//	Add(&num);
+//	printf("num = %d\n", num);
+//	return 0;
+//}
+
+
+//======递归==============
+//// 练习1：
+////接受一个整形值（无符号），按照顺序打印它的每一位。
+////如：输入1234，输出1 2 3 4
+//void print(int n)
+//{
+//	if (n > 9)
+//	{
+//		print(n / 10);
+//	}
+//	printf("%d ", n % 10);
+//}
+//int main()
+//{
+//	unsigned int num = 0;
+//	scanf("%d", &num);
+//	print(num);
+//	return 0;
+//}
+
+////练习2：
+////编写函数不允许创建临时变量，求字符串的长度。
+//int my_strlen(char* str)
+//{
+//	//计算字符串长度
+//	//递归法：
+//	if (*str != '\0')
+//		return 1 + my_strlen(str + 1);
+//	else
+//		return 0;
+//
+//	//创建变量法：
+//	//int count = 0;
+//	//while (*str != '\0')
+//	//{
+//	//	count++;
+//	//	str++;
+//	//}
+//	//return count;
+//}
+//int main()
+//{
+//	char arr[] = "bit";
+//	//int len = strlen(arr);
+//
+//	//实现模拟一个strlen
+//	//arr是数组，数组传参，传过去的不是整个数组，而是第一个元素的地址
+//	int len = my_strlen(arr);
+//	printf("%d\n", len);
+//	return 0;
+//}
+
+////练习3：
+////求n的阶乘。（不考虑溢出）
+//int jiech(int n)
+//{
+//	//递归法：
+//	if (n <= 1)
+//		return 1;
+//	else
+//		return n * jiech(n - 1);
+//
+//	/*int i = 0;
+//	int rec  = 0;
+//	for (i = 1; i <= n; i++)
+//	{
+//		rec *= i;
+//	}
+//	return rec;*/
+//}
+//int main()
+//{
+//	int n = 0;
+//	int rec = 0;
+//	scanf("%d", &n);
+//	rec = jiech(n);
+//	printf("%d\n", rec);
+//	return 0;
+//}
+
 //练习4：
-//写一个函数，每调用一次此函数，就会将num的值增加1。
-void Add(int* p)
+//求第n个斐波那契数。（不考虑溢出）
+//斐波那契数数列：1 1 2 3 5 8 13...(后一个数等于前两个数的和)
+//描述第n个斐波那契数时：Fib(n)=1, n<=2; Fib(n)=Fib(n-1)+Fib(n-2), n>2。
+int Fib(int n)
 {
-	//*p++中++只作用于p
-	(*p)++;
+	//n越大，结果可能有误，有因为有溢出
+	//迭代法：
+	int a = 1;
+	int b = 1;
+	int c = 1;
+	//int i = 0;
+	//for (i = 1; i <= n - 2; i++)
+	while (n > 2)
+	{
+		c = a + b;
+		a = b;
+		b = c;
+		n--;
+	}
+	return c;
+
+	//递归法：若n较大，效率较低，计算时间长
+	/*if (n <= 2)
+		return 1;
+	else
+		return Fib(n - 1) + Fib(n - 2);*/
 }
 int main()
 {
-	int num = 0;
-	Add(&num);
-	printf("num = %d\n", num);
-	Add(&num);
-	printf("num = %d\n", num);
-	Add(&num);
-	printf("num = %d\n", num);
+	int n = 0;
+	scanf("%d", &n);
+	int rec = Fib(n);
+	printf("rec = %d\n", rec);
 	return 0;
 }
