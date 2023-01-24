@@ -148,8 +148,110 @@
 //	return 0;
 //}
 
+
+////数组传参和指针传参
+//void test(int arr[])
+//{}
+//void test(int arr[10])
+//{}
+//void test(int *arr)
+//{}
+//void test2(int* arr[])
+//{}
+//void test2(int* arr[10])
+//{}
+//void test2(int** arr2)//一级指针的首元素地址放于二级指针中
+//{}
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int* arr2[20] = { 0 };
+//	test(arr);
+//	test2(arr2);
+//	return 0;
+//}
+
+//void test(int arr[3][5])
+//{}
+//void test1(int arr[][5])//行号可以省略，列号不能省略
+//{}
+//int main()
+//{
+//	int arr[3][5] = { 0 };
+//	test(arr);
+//	test1(arr);
+//	return 0;
+//}
+
+////错误传参方法：
+////void test(int* arr)  //整形指针用于存放整形地址，arr是第一行数组的地址
+////void test(int* arr[5])
+////void test(int** arr) //二级指针用于存放一级指针变量的地址
+//void test(int (*arr)[5])
+//{}
+//int main()
+//{
+//	int arr[3][5] = { 0 };
+//	test(arr);//数组名是首元素地址（第一行数组的地址）
+//	return 0;
+//}
+
+//void print(int* p, int sz)
+//{
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d ", *(p + i));
+//	}
+//}
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9 };
+//	int* p = arr;//首元素地址
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	//一级指针p传参
+//	print(p, sz);
+//	return 0;
+//}
+
+//void test1(int* p)
+//{}
+//void test2(char* p)
+//{}
+//int main()
+//{
+//	//test1传参方法：
+//	int a = 10;
+//	int* p = &a;
+//	test1(&a);
+//	test1(p);
+//	//test2传参方法：
+//	char ch = 'W';
+//	char* pc = &ch;
+//	test2(&ch);
+//	test2(pc);
+//	return 0;
+//}
+
+void test(int** ptr)
+{
+	printf("num = %d\n", **ptr);
+}
+void test1(int** ptr)
+{
+	printf("num = %p\n", **ptr);
+}
 int main()
 {
-
+	int n = 10;
+	int b = 2;
+	int* p = &n;//一级指针
+	int** pp = &p;//二级指针
+	int* arr[10] = { &n,&b };
+	//int* arr[10];
+	//传输参数方法：
+	test(pp);//传入二级指针变量
+	test(&p);//传入一级指针变量的地址仍为二级指针
+	test1(arr);//传入指针数组
 	return 0;
 }
