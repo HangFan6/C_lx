@@ -233,25 +233,39 @@
 //	return 0;
 //}
 
-void test(int** ptr)
+//void test(int** ptr)
+//{
+//	printf("num = %d\n", **ptr);
+//}
+//void test1(int** ptr)
+//{
+//	printf("num = %p\n", **ptr);
+//}
+//int main()
+//{
+//	int n = 10;
+//	int b = 2;
+//	int* p = &n;//一级指针
+//	int** pp = &p;//二级指针
+//	int* arr[10] = { &n,&b };
+//	//int* arr[10];
+//	//传输参数方法：
+//	test(pp);//传入二级指针变量
+//	test(&p);//传入一级指针变量的地址仍为二级指针
+//	test1(arr);//传入指针数组
+//	return 0;
+//}
+
+int Add(int x, int y)
 {
-	printf("num = %d\n", **ptr);
-}
-void test1(int** ptr)
-{
-	printf("num = %p\n", **ptr);
+	int z = 0;
+	z = x + y;
+	return z;
 }
 int main()
 {
-	int n = 10;
-	int b = 2;
-	int* p = &n;//一级指针
-	int** pp = &p;//二级指针
-	int* arr[10] = { &n,&b };
-	//int* arr[10];
-	//传输参数方法：
-	test(pp);//传入二级指针变量
-	test(&p);//传入一级指针变量的地址仍为二级指针
-	test1(arr);//传入指针数组
+	int a = 10;
+	int b = 20;
+	printf("%d\n", Add(a, b));
 	return 0;
 }
