@@ -336,6 +336,7 @@
 //char* (*pf)(char*, const char*);
 //char* (*parr[4])(char*, const char*);
 
+
 //计算器实现
 void menu()
 {
@@ -361,50 +362,261 @@ int Div(int x, int y)
 {
 	return x / y;
 }
-int main()
-{
-	int input = 0;
-	int x = 0, y = 0;
-	do
-	{
-		menu();
-		printf("请选择：");
-		scanf("%d", &input);
-		switch (input)
-		{
-		case 1:
-			printf("请输入两个操作数：");
-			scanf("%d%d", &x, &y);
-			printf("%d\n", Add(x, y));
-			break;
-		case 2:
-			printf("请输入两个操作数：");
-			scanf("%d%d", &x, &y);
-			printf("%d\n", Sub(x, y));
-			break;
-		case 3:
-			printf("请输入两个操作数：");
-			scanf("%d%d", &x, &y);
-			printf("%d\n", Mul(x, y));
-			break;
-		case 4:
-			printf("请输入两个操作数：");
-			scanf("%d%d", &x, &y);
-			printf("%d\n", Div(x, y));
-			break;
-		case 0:
-			printf("退出计算\n");
-			break;
-		default:
-			printf("选择错误\n");
-			break;
-		}
-	} while (input);
-	return 0;
-}
-
+//方法1：
 //int main()
 //{
-//
+//	int input = 0;
+//	int x = 0, y = 0;
+//	do
+//	{
+//		menu();
+//		printf("请选择：");
+//		scanf("%d", &input);
+//		switch (input)
+//		{
+//		case 1:
+//			printf("请输入两个操作数：");
+//			scanf("%d%d", &x, &y);
+//			printf("%d\n", Add(x, y));
+//			break;
+//		case 2:
+//			printf("请输入两个操作数：");
+//			scanf("%d%d", &x, &y);
+//			printf("%d\n", Sub(x, y));
+//			break;
+//		case 3:
+//			printf("请输入两个操作数：");
+//			scanf("%d%d", &x, &y);
+//			printf("%d\n", Mul(x, y));
+//			break;
+//		case 4:
+//			printf("请输入两个操作数：");
+//			scanf("%d%d", &x, &y);
+//			printf("%d\n", Div(x, y));
+//			break;
+//		case 0:
+//			printf("退出计算\n");
+//			break;
+//		default:
+//			printf("选择错误\n");
+//			break;
+//		}
+//	} while (input);
 //	return 0;
 //}
+
+////优化1：
+//int main()
+//{
+//	int input = 0;
+//	int x = 0, y = 0;
+//	int (*pArr[5])(int, int) = { 0,Add,Sub,Mul,Div };
+//	do
+//	{
+//		menu();
+//		printf("请选择：");
+//		scanf("%d", &input);
+//		if (input >= 1 && input <= 4)
+//		{
+//			printf("请输入两个操作数：");
+//			scanf("%d%d", &x, &y);
+//			int rec = pArr[input](x, y);
+//			printf("%d\n", rec);
+//		}
+//		else if (input == 0)
+//		{
+//			printf("退出计算\n");
+//		}
+//		else
+//			printf("选择错误\n");
+//	} while (input);
+//}
+
+////优化2：
+//void Calc(int (*pf)(int, int))
+//{
+//	//pf接收主函数中Calc中调用的函数地址
+//	int x = 0, y = 0;
+//	printf("请输入两个操作数：");
+//	scanf("%d%d", &x, &y);
+//	printf("%d\n", pf(x, y));
+//}
+//int main()
+//{
+//	int input = 0;
+//	do
+//	{
+//		menu();
+//		printf("请选择：");
+//		scanf("%d", &input);
+//		switch (input)
+//		{
+//		case 1:
+//			Calc(Add);
+//			break;
+//		case 2:
+//			Calc(Sub);
+//			break;
+//		case 3:
+//			Calc(Mul);
+//			break;
+//		case 4:
+//			Calc(Div);
+//			break;
+//		case 0:
+//			printf("退出计算\n");
+//			break;
+//		default:
+//			printf("选择错误\n");
+//			break;
+//		}
+//	} while (input);
+//	return 0;
+//}
+
+
+//int Add(int x, int y)
+//{
+//	return x + y;
+//}
+//int main()
+//{
+//	int arr[10] = { 0 };
+//	int(*p)[10] = &arr;//取数组的地址
+//
+//	int (*pf)(int, int);//函数指针
+//	int (*pfArr[4])(int, int);//pfArr是函数指针的数组
+//	int (*(*ppfArr)[4])(int, int) = &pfArr;
+//	//ppArr 是一个数组指针，指针指向的数组有4个元素
+//	//指向数组的每个元素类型是一个函数指针 int (*)(int,int)
+//	return 0;
+//}
+
+
+//冒泡排序：（多趟）两两相邻元素依次进行比较并交换
+//n个元素进行冒泡排序，需要n-1趟排序才可完成
+//只能对 整形 数组元素排序
+void rise_sort(int arr[], int sz)
+{
+	//确定冒泡排序趟数
+	int i = 0;
+	//int sz = sizeof(arr) / sizeof(arr[0]);
+	//在void rise_sort(int arr[])中计算数组中元素的个数，接收到的数组只有一个元素
+	for (i = 0; i < sz - 1; i++)
+	{
+		//每一趟冒泡排序
+		int j = 0;
+		int flag = 1;//假设这一趟需排序的数据已经有序了
+		for (j = 0; j < sz - 1 - i; j++)
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				int tmp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = tmp;
+				flag = 0;//本趟排序数据不完全有序
+			}
+		}
+		//防止该趟待排序元素已经有序了，还是会被比较
+		if (flag == 1)
+		{
+			break;
+		}
+	}
+}
+//qsort--C语言库函数--接收任意类型数组首元素地址
+struct stu
+{
+	char name[20];
+	int age;
+};
+//void* 的指针类型，可以接收任意类型的地址
+//void* 的指针类型，不能进行解引用操作，因为不知道类型，不确定需要访问几个字节
+//void* 的指针类型，不能进行+-整数的操作
+//库函数--qsort：
+ /*void qsort(void* base, 
+			size_t num, 
+			size_t width,
+			int(*cmp)(const void* e1, const void* e2)
+			);*/
+int cmp_int(const void* e1, const void* e2)
+{
+	//比较两个整形值的大小
+	/*e1 = e2：返回=0
+	e1 < e2：返回<0
+	e1 > e2：返回>0*/
+	return *(int*)e1 - *(int*)e2;
+}
+void test1()
+{
+	int arr[10] = { 9,8,7,6,5,4,3,2,1,0 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	qsort(arr, sz, sizeof(arr[0]), cmp_int);
+	int i = 0;
+	for (i = 0; i < sz; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
+}
+int cmp_float(const void* e1, const void* e2)
+{
+	//return *(float*)e1 - *(float*)e2;  //从float转换到int可能丢失数据
+	if (*(float*)e1 - *(float*)e2 == 0)
+		return 0;
+	else if (*(float*)e1 - *(float*)e2 > 0)
+		return 1;
+	else
+		return -1;
+}
+void test2()
+{
+	float f[] = { 9.0,3.0,8.0,1.0,6.0,5.0,4.0 };
+	int sz = sizeof(f) / sizeof(f[0]);
+	qsort(f, sz, sizeof(f[0]), cmp_float);
+	int i = 0;
+	for (i = 0; i < sz; i++)
+	{
+		printf("%.2f ", f[i]);
+	}
+	printf("\n");
+}
+int cmp_stu_age(const void* e1, const void* e2)
+{
+	return ((struct stu*)e1)->age - ((struct stu*)e2)->age;
+}
+void test3()
+{
+	struct stu s[3] = { {"张三",20},{"李四",30},{"吴宇",15} };
+	int sz = sizeof(s) / sizeof(s[0]);
+	qsort(s, sz, sizeof(s[0]), cmp_stu_age);
+	int i = 0;
+	for (i = 0; i < sz; i++)
+	{
+		printf("%d ", s[i].age);
+	}
+	printf("\n");
+}
+int cmp_stu_name(const void* e1, const void* e2)
+{
+	return strcmp(((struct stu*)e1)->name, ((struct stu*)e2)->name);
+}
+void test4()
+{
+	struct stu s[3] = { {"张三",20},{"李四",30},{"吴宇",15} };
+	int sz = sizeof(s) / sizeof(s[0]);
+	qsort(s, sz, sizeof(s[0]), cmp_stu_name);
+	int i = 0;
+	for (i = 0; i < sz; i++)
+	{
+		printf("%s ", s[i].name);
+	}
+}
+int main()
+{
+	test1();//对 整形 数组排序
+	test2();//对 浮点型 数组排序
+	test3();//对 结构体 年龄排序
+	test4();//对 结构体 名字排序
+	return 0;
+}
