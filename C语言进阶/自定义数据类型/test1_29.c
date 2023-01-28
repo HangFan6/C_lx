@@ -39,15 +39,43 @@
 //	return 0;
 //}
 
-//==========枚举=============
-enum Color
+////==========枚举=============
+//enum Color
+//{
+//	RED = 3,
+//	GREEN,
+//	BULE
+//};
+//int main()
+//{
+//	printf("%d %d %d\n", RED, GREEN, BULE);
+//	return 0;
+//}
+
+//==========共用体=============
+//union Un
+//{
+//	char c;
+//	int i;
+//};
+//int main()
+//{
+//	union Un u;
+//	printf("%d\n", sizeof(u));
+//	printf("%p\n", &u);
+//	printf("%p\n", &(u.c));
+//	printf("%p\n", &(u.i));
+//	return 0;
+//}
+
+union Un
 {
-	RED = 3,
-	GREEN,
-	BULE
+	int a;//4
+	char arr[5];//5
 };
 int main()
 {
-	printf("%d %d %d\n", RED, GREEN, BULE);
+	union Un u;
+	printf("%d\n", sizeof(u));
 	return 0;
 }
