@@ -269,11 +269,125 @@
 //	return 0;
 //}
 
+//int main()
+//{
+//	char ch = tolower('Q');
+//	char hg = toupper('m');
+//	putchar(ch);
+//	putchar(hg);
+//	return 0;
+//}
+
+//int main()
+//{
+//	int arr1[] = { 1,2,3,4,5 };
+//	int arr2[5] = { 0 };
+//	int i = 0;
+//	//strcpy(arr2, arr1);//char* dest, char* src
+//	memcpy(arr2, arr1, sizeof(arr1));
+//	for (i = 0; i < 5; i++)
+//	{
+//		printf("%d ", arr2[i]);
+//		//arr1使用小端存储:01 00 00 00、02 00 00 00......
+//		//arr2拷贝时先拷贝01，在拷贝00 = \0，停止拷贝。
+//	}
+//	return 0;
+//}
+
+//struct s
+//{
+//	char name[20];
+//	int age;
+//};
+//void* my_memcpy(void* dest, const void* src, size_t num)
+//{
+//	void* ret = dest;
+//	assert(dest && src);//dest和src不能等于NULL
+//	while (num--)
+//	{
+//		*(char*)dest = *(char*)src;
+//		++(char*)dest;
+//		++(char*)src;
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	/*int i = 0;
+//	struct s arr1[] = { {"张三",20},{"李四",25} };
+//	struct s arr2[3] = { 0 };
+//	my_memcpy(arr2, arr1,sizeof(arr1));
+//	for (i = 0; i < 2; i++)
+//	{
+//		printf("%s ", arr2[i].name);
+//	}*/
+//
+// 	int i = 0;
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	//将12345拷贝到34567的位置
+//	//my_memcpy(arr + 2, arr, 20);//1 2 1 2 1 2 1 8 9 10
+//	memmove(arr + 2, arr, 20);//处理内存重叠情况
+//	for (i = 0; i < 10; i++)
+//	{
+// 		printf("%d ", arr[i]);
+//	}
+//	return 0;
+//}
+
+//void* my_memmove(void* dest, const void* src, size_t count)
+//{
+//	assert(dest && src);
+//	void* ret = dest;
+//	//从前向后拷贝
+//	if (dest < src)
+//	{
+//		while (count--)
+//		{
+//			*(char*)dest = *(char*)src;
+//			++(char*)dest;
+//			++(char*)src;
+//		}
+//	}
+//	//从后向前拷贝
+//	else
+//	{
+//		while (count--)
+//		{
+//			*((char*)dest + count) = *((char*)src + count);
+//		}
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	int i = 0;
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	//将12345拷贝到34567的位置
+//	my_memmove(arr + 2, arr, 20);//处理内存重叠情况
+//	for (i = 0; i < 10; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	return 0;
+//}
+
+//int main()
+//{
+//	int arr1[] = { 1,2,3,4,5 };
+//	int arr2[] = { 1,2,5,4,3 };
+//	int ret = memcmp(arr1, arr2, 9);
+//	printf("%d\n", ret);
+//	return 0;
+//}
+
 int main()
 {
-	char ch = tolower('Q');
-	char hg = toupper('m');
-	putchar(ch);
-	putchar(hg);
+	char arr[10] = "";
+	memset(arr, '#', 10);
+	int i = 0;
+	for (i = 0; i < 10; i++)
+	{
+		printf("%c ", arr[i]);
+	}
 	return 0;
 }
