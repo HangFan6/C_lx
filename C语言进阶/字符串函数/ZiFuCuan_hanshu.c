@@ -208,6 +208,26 @@
 
 int main()
 {
+	char arr[] = "het@bidie.tech";
+	char* p = "@.";
+	char buf[1024] = { 0 };
+	//het\0bidie.tech
+	strcpy(buf, arr);
+	//切割buf中的字符串
+	
+	//char* ret = strtok(arr, p);
+	//printf("%s\n", ret);
+	////het@bidie\0tech
+	//ret = strtok(NULL, p);
+	//printf("%s\n", ret);
+	//ret = strtok(NULL, p);
+	//printf("%s\n", ret);
 
+	//优化：
+	char* ret = NULL;
+	for (ret = strtok(arr, p); ret != NULL; ret = strtok(NULL, p))
+	{
+		printf("%s\n", ret);
+	}
 	return 0;
 }
