@@ -206,28 +206,74 @@
 //	return 0;
 //}
 
+//int main()
+//{
+//	char arr[] = "het@bidie.tech";
+//	char* p = "@.";
+//	char buf[1024] = { 0 };
+//	//het\0bidie.tech
+//	strcpy(buf, arr);
+//	//切割buf中的字符串
+//	
+//	//char* ret = strtok(arr, p);
+//	//printf("%s\n", ret);
+//	////het@bidie\0tech
+//	//ret = strtok(NULL, p);
+//	//printf("%s\n", ret);
+//	//ret = strtok(NULL, p);
+//	//printf("%s\n", ret);
+//
+//	//优化：
+//	char* ret = NULL;
+//	for (ret = strtok(arr, p); ret != NULL; ret = strtok(NULL, p))
+//	{
+//		printf("%s\n", ret);
+//	}
+//	return 0;
+//}
+
+#include<errno.h>
+//int main()
+//{
+//	//C语言库函数设置的错误码
+//	//0 - No error
+//	//1 - Operation not permitted
+//	//2 - No such file or directory
+//	//...
+//	char* str = strerror(errno);
+//	//errno是一个全局的错误码的变量
+//	//当C语言的库函数在执行过程中，发生错误，会把对应的错误码赋值到errno中
+//	printf("%s\n", str);
+//	//将错误码翻译为错误信息
+//	return 0;
+//}
+
+//int main()
+//{
+//	//打开文件
+//	FILE* pf = fopen("test.txt", "r");
+//	if (pf == NULL)
+//		printf("%s\n", strerror(errno));
+//	else
+//		printf("open file successful");
+//	return 0;
+//}
+
+//#include<ctype.h>
+//int main()
+//{
+//	char ch = '87';
+//	//int ret = islower(ch);
+//	int ret = isdigit(ch);
+//	printf("%d\n", ret);
+//	return 0;
+//}
+
 int main()
 {
-	char arr[] = "het@bidie.tech";
-	char* p = "@.";
-	char buf[1024] = { 0 };
-	//het\0bidie.tech
-	strcpy(buf, arr);
-	//切割buf中的字符串
-	
-	//char* ret = strtok(arr, p);
-	//printf("%s\n", ret);
-	////het@bidie\0tech
-	//ret = strtok(NULL, p);
-	//printf("%s\n", ret);
-	//ret = strtok(NULL, p);
-	//printf("%s\n", ret);
-
-	//优化：
-	char* ret = NULL;
-	for (ret = strtok(arr, p); ret != NULL; ret = strtok(NULL, p))
-	{
-		printf("%s\n", ret);
-	}
+	char ch = tolower('Q');
+	char hg = toupper('m');
+	putchar(ch);
+	putchar(hg);
 	return 0;
 }
