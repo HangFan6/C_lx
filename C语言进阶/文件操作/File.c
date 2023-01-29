@@ -221,27 +221,27 @@
 //	return 0;
 //}
 
-typedef struct S
-{
-	char name[20];
-	int age;
-	double score;
-}S;
-int main()
-{
-	S s = { "张三",20,95.5 };
-	FILE* pf = fopen("ab.txt", "wb");
-	if (pf == NULL)
-	{
-		return 0;
-	}
-	//二进制形式写文件
-	fwrite(&s, sizeof(S), 1, pf);
-
-	fclose(pf);
-	pf = NULL;
-	return 0;
-}
+//typedef struct S
+//{
+//	char name[20];
+//	int age;
+//	double score;
+//}S;
+//int main()
+//{
+//	S s = { "张三",20,95.5 };
+//	FILE* pf = fopen("ab.txt", "wb");
+//	if (pf == NULL)
+//	{
+//		return 0;
+//	}
+//	//二进制形式写文件
+//	fwrite(&s, sizeof(S), 1, pf);
+//
+//	fclose(pf);
+//	pf = NULL;
+//	return 0;
+//}
 
 //typedef struct S
 //{
@@ -265,3 +265,79 @@ int main()
 //	pf = NULL;
 //	return 0;
 //}
+
+//int main()
+//{
+//	//文件内容为：abcdef
+//	FILE* pf = fopen("ab.txt", "r");
+//	if (pf == NULL)
+//	{
+//		return 0;
+//	}
+//	//定位文件指针
+//	//fseek(pf, 2, SEEK_CUR);//c
+//	fseek(pf, -4, SEEK_END);//c
+//	//读文件
+//	int ch = fgetc(pf);
+//	printf("%c\n", ch);
+//
+//	fclose(pf);
+//	pf = NULL;
+//	return 0;
+//}
+
+//int main()
+//{
+//	//文件内容为：abcdef
+//	FILE* pf = fopen("ab.txt", "r");
+//	if (pf == NULL)
+//	{
+//		return 0;
+//	}
+//	fseek(pf, -4, SEEK_END);//c
+//	fgetc(pf);
+//	int pos = ftell (pf);
+//	printf("%d\n", pos);
+//
+//	fclose(pf);
+//	pf = NULL;
+//	return 0;
+//}
+
+//int main()
+//{
+//	//文件内容为：abcdef
+//	FILE* pf = fopen("ab.txt", "r");
+//	if (pf == NULL)
+//	{
+//		return 0;
+//	}
+//	int ch = fgetc(pf);
+//	printf("%c\n", ch);
+//	rewind(pf);
+//	ch = fgetc(pf);
+//	printf("%c\n", ch);
+//
+//	fclose(pf);
+//	pf = NULL;
+//	return 0;
+//}
+
+int main()
+{
+	//strerror -- 把错误码对应的错误信息的字符串地址返回
+	//printf("%s\n", strerror(errno));
+
+	//perror
+	FILE* pf = fopen("test2.txt", "r");
+	if (pf == NULL)
+	{
+		perror("错误");
+		return 0;
+	}
+	//读文件
+
+	fclose(pf);
+	pf = NULL;
+	return 0;
+}
