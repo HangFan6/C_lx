@@ -329,13 +329,22 @@ int main()
 	//printf("%s\n", strerror(errno));
 
 	//perror
-	FILE* pf = fopen("test2.txt", "r");
+	FILE* pf = fopen("ab.txt", "r");
 	if (pf == NULL)
 	{
 		perror("错误");
 		return 0;
 	}
 	//读文件
+	int ch = 0;
+	while ((ch = fgetc(pf)) != EOF)
+	{
+		putchar(ch);
+	}
+	if (ferror(pf))
+		printf("error\n");
+	else if (feof(pf))
+		printf("end of file\n");
 
 	fclose(pf);
 	pf = NULL;
