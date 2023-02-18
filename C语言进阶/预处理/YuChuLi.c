@@ -75,16 +75,38 @@
 //	return 0;
 //}
 
-#define MAX(X,Y) ((X)>(Y)?(X):(Y))
+//#define MAX(X,Y) ((X)>(Y)?(X):(Y))
+//int main()
+//{
+//	int a = 10;
+//	int b = 11;
+//	int max = MAX(a++, b++);
+//	//int max = ((a++)>(b++)?(a++):(b++));
+//	//10>11为假，a=11，b=12，max结果为b=12，此后a=11，b=13
+//	printf("%d\n", max);//12
+//	printf("%d\n", a);//11
+//	printf("%d\n", b);//13
+//	return 0;
+//}
+
+
+#define MAX(X,Y) ((X)>(Y)?(X):(Y))//宏
+int Max(int x, int y)//函数
+{
+	return(x > y ? x : y);
+}
 int main()
 {
 	int a = 10;
 	int b = 11;
-	int max = MAX(a++, b++);
-	//int max = ((a++)>(b++)?(a++):(b++));
-	//10>11为假，a=11，b=12，max结果为b=12，此后a=11，b=13
-	printf("%d\n", max);//12
-	printf("%d\n", a);//11
-	printf("%d\n", b);//13
+	float c = 3.0f;
+	float d = 4.0f;
+	//函数在调用时会有函数调用和返回的开销
+	int max = Max(a, b);
+	float max2 = MAX(c, d);
+	printf("%d\n", max);
+	max = MAX(a, b);
+	printf("%d\n", max);
+	printf("%f\n", max2);
 	return 0;
 }
