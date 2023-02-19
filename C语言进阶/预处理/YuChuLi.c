@@ -90,23 +90,52 @@
 //}
 
 
-#define MAX(X,Y) ((X)>(Y)?(X):(Y))//宏
-int Max(int x, int y)//函数
-{
-	return(x > y ? x : y);
-}
+//#define MAX(X,Y) ((X)>(Y)?(X):(Y))//宏
+//int Max(int x, int y)//函数
+//{
+//	return(x > y ? x : y);
+//}
+//int main()
+//{
+//	int a = 10;
+//	int b = 11;
+//	float c = 3.0f;
+//	float d = 4.0f;
+//	//函数在调用时会有函数调用和返回的开销
+//	int max = Max(a, b);
+//	float max2 = MAX(c, d);
+//	printf("%d\n", max);
+//	max = MAX(a, b);
+//	printf("%d\n", max);
+//	printf("%f\n", max2);
+//	return 0;
+//}
+
+////命令行定义
+//int main()
+//{
+//	int arr[SZ] = { 0 };
+//	int i = 0;
+//	for (i = 0; i < SZ; i++)
+//	{
+//		arr[i] = i;
+//		printf("%d ", arr[i]);
+//	}
+//	printf("\n");
+//	return 0;
+//}
+
+#define DEBUG
 int main()
 {
-	int a = 10;
-	int b = 11;
-	float c = 3.0f;
-	float d = 4.0f;
-	//函数在调用时会有函数调用和返回的开销
-	int max = Max(a, b);
-	float max2 = MAX(c, d);
-	printf("%d\n", max);
-	max = MAX(a, b);
-	printf("%d\n", max);
-	printf("%f\n", max2);
+	int i = 0;
+	int arr[10] = { 0 };
+	for (i = 0; i < 10; i++)
+	{
+		arr[i] = i;
+#ifdef DEBUG
+		printf( "%d ",arr[i]);
+#endif // DEBUG
+	}
 	return 0;
 }
